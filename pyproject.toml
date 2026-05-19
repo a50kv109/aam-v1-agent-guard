@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aam-v1-agent-guard"
+version = "1.0.0"
+description = "AAM-V1: Topological Telemetry and Evidence-Based Runtime for Long-Horizon Autonomous Agents"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Andrey A. Artsybashev", email = "a50kv109@users.noreply.github.com"}
+]
+keywords = [
+    "agent",
+    "llm",
+    "autonomy",
+    "telemetry",
+    "reliability",
+    "long-horizon",
+    "rabbit-hole",
+    "circuit-breaker"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "scipy>=1.10.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pylint>=2.17.0"
+]
+
+langchain = [
+    "langchain>=0.1.0"
+]
+
+monitoring = [
+    "prometheus-client>=0.17.0"
+]
+
+all = [
+    "aam-v1-agent-guard[dev,langchain,monitoring]"
+]
+
+[project.urls]
+Homepage = "https://github.com/a50kv109/aam-v1-agent-guard"
+Documentation = "https://github.com/a50kv109/aam-v1-agent-guard/blob/main/README.md"
+Repository = "https://github.com/a50kv109/aam-v1-agent-guard.git"
+Issues = "https://github.com/a50kv109/aam-v1-agent-guard/issues"
+DOI = "https://doi.org/10.5281/zenodo.20214580"
+
+[tool.setuptools]
+packages = ["aam_v1"]
+package-dir = {"" = "src"}
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
